@@ -4,9 +4,11 @@ from Adafruit_IO import MQTTClient
 import time
 import random
 from simple_ai import *
+from uart import *
+
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "datpham0411"
-AIO_KEY = "aio_IIzD46ZSQYwW7NyNRYdATZLlBkwo"
+AIO_KEY = "aio_BCxX85UkFaJZzZ7ZT7WcIev5cU7p"
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -66,5 +68,7 @@ while True:
         print("AI Output: ", ai_result)
         if previous_result != ai_result:
             client.publish("ai", ai_result)
+    
+    readSerial(client)
     time.sleep(1)
     # pass

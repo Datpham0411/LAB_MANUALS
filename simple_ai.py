@@ -13,19 +13,19 @@ class_names = open("labels.txt", "r").readlines()
 
 # CAMERA can be 0 or 1 based on default camera of your computer
 # camera = cv2.VideoCapture(0)
-camera = cv2.VideoCapture("http://192.168.45.162:4747/video")
+camera = cv2.VideoCapture("http://192.168.137.163:4747/video")
 
 def image_detector():
-    # if not camera.isOpened:
-    #     print("Error: Unable to open camera. Please check your camera connection.")
-    #     break
+    if not camera.isOpened:
+        print("Error: Unable to open camera. Please check your camera connection.")
+        return
 
     # Grab the webcamera's image.
     ret, image = camera.read()
 
-    # if not ret:
-    #     print("Error: Unable to read from webcam. Please check your camera connection.")
-    #     break
+    if not ret:
+        print("Error: Unable to read from webcam. Please check your camera connection.")
+        return
 
     # Resize the raw image into (224-height,224-width) pixels
     image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
