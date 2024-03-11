@@ -11,7 +11,7 @@ def getPort():
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     # return commPort
-    return "/dev/pts/6"
+    return "/dev/pts/8"
 
 if getPort != "None":
     ser = serial.Serial( port=getPort(), baudrate=115200)
@@ -39,3 +39,6 @@ def readSerial(client):
                 mess = ""
             else:
                 mess = mess[end+1:]
+
+def writeData(data):
+    ser.write(str(data).encode())
